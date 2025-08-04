@@ -9,7 +9,13 @@ This CNN was trained on the [ESC-50 dataset](https://github.com/karolpiczak/ESC-
 
 ## Use
 
+Project hosted on AWS Amplify [here](https://main.dgcarxob8ot9r.amplifyapp.com/)
+
+If model inferencing takes a while, it's probably due to a cold start from the web endpoint hosted on Modal.
+
 ## Demo
+
+https://github.com/user-attachments/assets/d05fe28a-6976-4ef3-9396-8f09345ea4b7
 
 ## 💻 Tech Stack
 
