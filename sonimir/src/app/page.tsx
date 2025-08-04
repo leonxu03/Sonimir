@@ -21,7 +21,7 @@ interface LayerData {
 }
 
 interface VisualizationData {
-  [layerName: string]: LayerData;
+  [layerName: string]: LayerData; // eslint-disable-line
 }
 
 interface WaveformData {
@@ -91,7 +91,7 @@ const ESC50_EMOJI_MAP: Record<string, string> = {
 };
 
 const getEmojiForClass = (className: string): string => {
-  return ESC50_EMOJI_MAP[className] || "📢";
+  return ESC50_EMOJI_MAP[className] ?? "📢";
 };
 
 function splitLayers(visualization: VisualizationData) {
@@ -107,9 +107,7 @@ function splitLayers(visualization: VisualizationData) {
         continue;
       }
 
-      if (!internals[parent]) {
-        internals[parent] = [];
-      }
+      internals[parent] ??= [];
 
       internals[parent].push([name, data]);
     }
@@ -167,7 +165,7 @@ export default function HomePage() {
 
         const data: ApiResponse = await response.json();
         setVizData(data);
-      } catch (err) {
+      } catch (err: unknown) {
         setError(
           err instanceof Error ? err.message : "An unexpected error occurred",
         );
@@ -226,7 +224,9 @@ export default function HomePage() {
             Audio Visualizer + Convolutional Neural Network
           </p>
           <p className="text-md mt-2 text-stone-600">
-            Upload a WAV file to see the model's predictions and feature maps
+            {
+              "Upload a WAV file to see the model's predictions and feature maps"
+            }
           </p>
           <div className="mt-6 flex justify-center gap-4">
             <div className="flex flex-col items-center">
